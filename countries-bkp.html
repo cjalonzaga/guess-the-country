@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    
+    #text-holder{
+      height: 50px;
+      width: auto;
+    }
+
+    body{
+    	background: #ccc;
+    }
+
+    div#button-holder {display: flex;column-gap: 5px;}
+
+  </style>
+</head>
+<body>
+
+<div>
+  <img id="image" />
+  <br>
+  <button id="submit">Submit</button>
+  <button id="clear">clear</button>
+</div>
+
+<div id="text-holder" style="display: flex;"></div>
+
+<div id="button-holder">
+
+</div>
+
+<script type="text/javascript">
+  
+var countries = [
+  {
+    "name": "AFGHANISTAN" , "img" : "flag-of-Afghanistan"
+  },
+  {
+    "name": "ALBANIA" , "img" : "flag-of-Albania"
+  },
+  {
+    "name": "ALGERIA", "img" : "flag-of-Algeria"
+  },
+  {
+    "name": "ANDORRA" , "img" : "flag-of-Andorra"
+  },
+  {
+    "name": "ANGOLA", "img" : "flag-of-Angola"
+  },
+  {
+    "name": "ANTIGUA AND BARBUDA" , "img" : "flag-of-Antigua"
+  },
+  {
+    "name": "ARGENTINA", "img" : "flag-of-Argentina"
+  },
+  {
+    "name": "ARMENIA", "img" : "flag-of-Armenia"
+  },
+  {
+    "name": "AUSTRALIA", "img" : "flag-of-Australia"
+  },
+  {
+    "name": "AUSTRIA", "img" : "flag-of-Austria"
+  },
+  {
+    "name": "AZERBAIJAN", "img" : "flag-of-Azerbaijan"
+  },
+  {
+    "name": "BAHAMAS", "img" : "flag-of-Bahamas"
+  },
+  {
+    "name": "BAHRAIN", "img" : "flag-of-Bahrain"
+  },
+  {
+    "name": "BANGLADESH", "img" : "flag-of-Bangladesh"
+  },
+  {
+    "name": "BARBADOS", "img" : "flag-of-Barbados"
+  },
+  {
+    "name": "BELARUS", "img" : "flag-of-Belarus"
+  },
+  {
+    "name": "BELGIUM", "img" : "flag-of-Belgium"
+  },
+  {
+    "name": "BELIZE", "img" : "flag-of-Belize"
+  },
+  {
+    "name": "BENIN", "img" : "flag-of-Benin"
+  },
+  {
+    "name": "BHUTAN", "img" : "flag-of-Bhutan"
+  },
+  {
+    "name": "BOLIVIA", "img" : "flag-of-Bolivia"
+  },
+  {
+    "name": "BOSNIA AND HERZEGOVINA", "img" : "flag-of-Bosnia-Herzegovina"
+  },
+  {
+    "name": "BOTSWANA", "img" : "flag-of-Botswana"
+  },
+  {
+    "name": "BRAZIL", "img" : "flag-of-Brazil"
+  },
+  {
+    "name": "BRUNEI", "img" : "flag-of-Brunei"
+  },
+  {
+    "name": "BULGARIA", "img" : "flag-of-Bulgaria"
+  },
+  {
+    "name": "BURKINA FASO", "img" : "flag-of-Burkina-Faso"
+  },
+  {
+    "name": "BURUNDI", "img" : "flag-of-Burundi"
+  },
+  {
+    "name": "CABO VERDE", "img" : "flag-of-Cabo-Verde"
+  },
+  {
+    "name": "CAMBODIA", "img" : "flag-of-Cambodia"
+  },
+  {
+    "name": "CAMEROON", "img" : "flag-of-Cameroon"
+  },
+  {
+    "name": "CANADA", "img" : "flag-of-Canada"
+  },
+  {
+    "name": "CENTRAL AFRICAN REPUBLIC", "img" : "flag-of-Central-African-Republic"
+  },
+  {
+    "name": "CHAD", "img" : "flag-of-Chad"
+  },
+  {
+    "name": "CHILE", "img" : "flag-of-Chile"
+  },
+  {
+    "name": "CHINA", "img" : "flag-of-China"
+  },
+  {
+    "name": "COLOMBIA", "img" : "flag-of-Colombia"
+  },
+  {
+    "name": "COMOROS", "img" : "flag-of-Comoros"
+  },
+  {
+    "name": "CONGO, DEMOCRATIC REPUBLIC OF THE", "img" : "flag-of-Congo-Democratic-Republic-of"
+  },
+  {
+    "name": "CONGO, REPUBLIC OF THE", "img" : "flag-of-Congo"
+  },
+  {
+    "name": "COSTA RICA", "img" : "flag-of-Costa-Rica"
+  },
+  {
+    "name": "COTE D'IVOIRE", "img" : "flag-of-Cote-d-Ivoire"
+  },
+  {
+    "name": "CROATIA", "img" : "flag-of-Croatia"
+  },
+  {
+    "name": "CUBA", "img" : "flag-of-Cuba"
+  },
+  {
+    "name": "CYPRUS", "img" : "flag-of-Cyprus"
+  },
+  {
+    "name": "CZECHIA", "img" : "flag-of-Czech-Republic"
+  },
+  {
+    "name": "DENMARK", "img" : "flag-of-Denmark"
+  },
+  {
+    "name": "DJIBOUTI", "img" : "flag-of-Djibouti"
+  },
+  {
+    "name": "DOMINICA", "img" : "flag-of-Dominica"
+  },
+  {
+    "name": "DOMINICAN REPUBLIC", "img" : "flag-of-Dominican-Republic"
+  },
+  {
+    "name": "ECUADOR", "img" : "flag-of-Ecuador"
+  },
+  {
+    "name": "EGYPT", "img" : "flag-of-Egypt"
+  },
+  {
+    "name": "EL SALVADOR", "img": "flag-of-El-Salvador"
+  },
+  {
+    "name": "EQUATORIAL GUINEA" , "img": "flag-of-Equatorial-Guinea"
+  },
+  {
+    "name": "ERITREA" , "img": "flag-of-Eritrea"
+  },
+  {
+    "name": "ESTONIA" , "img": "flag-of-Estonia"
+  },
+  {
+    "name": "ESWATINI" , "img": "flag-of-Eswatini"
+  },
+  {
+    "name": "ETHIOPIA" , "img": "flag-of-Ethiopia"
+  },
+  {
+    "name": "FIJI" , "img": "flag-of-Fiji"
+  },
+  {
+    "name": "FINLAND" , "img": "flag-of-Finland"
+  },
+  {
+    "name": "FRANCE" , "img": "flag-of-France"
+  },
+  {
+    "name": "GABON" , "img": "flag-of-Gabon"
+  },
+  {
+    "name": "GAMBIA" , "img": "flag-of-Gambia"
+  },
+  {
+    "name": "GEORGIA" , "img": "flag-of-Georgia"
+  },
+  {
+    "name": "GERMANY", "img" : "flag-of-Germany"
+  },
+  {
+    "name": "GHANA", "img" : "flag-of-Ghana"
+  },
+  {
+    "name": "GREECE" , "img" : "flag-of-Greece"
+  },
+  {
+    "name": "GRENADA", "img" : "flag-of-Grenada"
+  },
+  {
+    "name": "GUATEMALA", "img" : "flag-of-Guatemala"
+  },
+  {
+    "name": "GUINEA", "img" : "flag-of-Guinea"
+  },
+  {
+    "name": "GUINEA-BISSAU", "img" : "flag-of-Guinea-Bissau"
+  },
+  {
+    "name": "GUYANA", "img" : "flag-of-Guyana"
+  },
+  {
+    "name": "HAITI", "img" : "flag-of-Haiti"
+  },
+  {
+    "name": "HONDURAS", "img" : "flag-of-Honduras"
+  },
+  {
+    "name": "HUNGARY", "img" : "flag-of-Hungary"
+  },
+  {
+    "name": "ICELAND", "img" : "flag-of-Iceland"
+  },
+  {
+    "name": "INDIA", "img" : "flag-of-India"
+  },
+  {
+    "name": "INDONESIA" , "img" : "flag-of-Indonesia"
+  },
+  {
+    "name": "IRAN" , "img" : "flag-of-Iran"
+  },
+  {
+    "name": "IRAQ" , "img" : "flag-of-Iraq"
+  },
+  {
+    "name": "IRELAND" , "img" : "flag-of-Ireland"
+  },
+  {
+    "name": "ISRAEL" , "img" : "flag-of-Israel"
+  },
+  {
+    "name": "ITALY", "img" : "flag-of-Italy"
+  },
+  {
+    "name": "JAMAICA", "img" : "flag-of-Jamaica"
+  },
+  {
+    "name": "JAPAN" , "img" : "flag-of-Japan"
+  },
+  {
+    "name": "JORDAN", "img" : "flag-of-Jordan"
+  },
+  {
+    "name": "KAZAKHSTAN", "img" : "flag-of-Kazakhstan"
+  },
+  {
+    "name": "KENYA", "img" : "flag-of-Kenya"
+  },
+  {
+    "name": "KIRIBATI", "img" : "flag-of-Kiribati"
+  },
+  {
+    "name": "KOSOVO", "img" : "flag-of-Kosovo"
+  },
+  {
+    "name": "KUWAIT", "img" : "flag-of-Kuwait"
+  },
+  {
+    "name": "KYRGYZSTAN", "img" : "flag-of-Kyrgyzstan"
+  },
+  {
+    "name": "LAOS", "img" : "flag-of-Laos"
+  },
+  {
+    "name": "LATVIA", "img" : "flag-of-Latvia"
+  },
+  {
+    "name": "LEBANON", "img" : "flag-of-Lebanon"
+  },
+  {
+    "name": "LESOTHO", "img" : "flag-of-Lesotho"
+  },
+  {
+    "name": "LIBERIA", "img" : "flag-of-Liberia"
+  },
+  {
+    "name": "LIBYA", "img" : "flag-of-Libya"
+  },
+  {
+    "name": "LIECHTENSTEIN", "img" : "flag-of-Liechtenstein"
+  },
+  {
+    "name": "LITHUANIA", "img" : "flag-of-Lithuania"
+  },
+  {
+    "name": "LUXEMBOURG", "img" : "flag-of-Luxembourg"
+  },
+  {
+    "name": "MADAGASCAR", "img" : "flag-of-Madagascar"
+  },
+  {
+    "name": "MALAWI", "img" : "flag-of-Malawi"
+  },
+  {
+    "name": "MALAYSIA", "img" : "flag-of-Malaysia"
+  },
+  {
+    "name": "MALDIVES", "img" : "flag-of-Maldives"
+  },
+  {
+    "name": "MALI", "img" : "flag-of-Mali"
+  },
+  {
+    "name": "MALTA", "img" : "flag-of-Malta"
+  },
+  {
+    "name": "MARSHALL ISLANDS", "img" : "flag-of-Marshall-Islands"
+  },
+  {
+    "name": "MAURITANIA", "img" : "flag-of-Mauritania"
+  },
+  {
+    "name": "MAURITIUS", "img" : "flag-of-Mauritius"
+  },
+  {
+    "name": "MEXICO", "img" : "flag-of-Mexico"
+  },
+  {
+    "name": "MICRONESIA", "img" : "flag-of-Micronesia"
+  },
+  {
+    "name": "MOLDOVA", "img" : "flag-of-Moldova"
+  },
+  {
+    "name": "MONACO", "img" : "flag-of-Monaco"
+  },
+  {
+    "name": "MONGOLIA", "img" : "flag-of-Mongolia"
+  },
+  {
+    "name": "MONTENEGRO", "img" : "flag-of-Montenegro"
+  },
+  {
+    "name": "MOROCCO", "img" : "flag-of-Morocco"
+  },
+  {
+    "name": "MOZAMBIQUE", "img" : "flag-of-Mozambique"
+  },
+  {
+    "name": "MYANMAR", "img" : "flag-of-Myanmar"
+  },
+  {
+    "name": "NAMIBIA", "img" : "flag-of-Namibia"
+  },
+  {
+    "name": "NAURU", "img" : "flag-of-Nauru"
+  },
+  {
+    "name": "NEPAL", "img" : "flag-of-Nepal"
+  },
+  {
+    "name": "NETHERLANDS", "img" : "flag-of-Netherlands"
+  },
+  {
+    "name": "NEW ZEALAND", "img" : "flag-of-New-Zealand"
+  },
+  {
+    "name": "NICARAGUA", "img" : "flag-of-Nicaragua"
+  },
+  {
+    "name": "NIGER", "img" : "flag-of-Niger"
+  },
+  {
+    "name": "NIGERIA", "img" : "flag-of-Nigeria"
+  },
+  {
+    "name": "NORTH KOREA", "img" : "flag-of-Korea-North"
+  },
+  {
+    "name": "NORTH MACEDONIA", "img" : "flag-of-North-Macedonia"
+  },
+  {
+    "name": "NORWAY", "img" : "flag-of-Norway"
+  },
+  {
+    "name": "OMAN", "img" : "flag-of-Oman"
+  },
+  {
+    "name": "PAKISTAN", "img" : "flag-of-Pakistan"
+  },
+  {
+    "name": "PALAU", "img" : "flag-of-Palau"
+  },
+  {
+    "name": "PALESTINE", "img" : "flag-of-Palestine"
+  },
+  {
+    "name": "PANAMA", "img" : "flag-of-Panama"
+  },
+  {
+    "name": "PAPUA NEW GUINEA", "img" : "flag-of-Papua-New-Guinea"
+  },
+  {
+    "name": "PARAGUAY", "img" : "flag-of-Paraguay"
+  },
+  {
+    "name": "PERU", "img" : "flag-of-Peru"
+  },
+  {
+    "name": "PHILIPPINES", "img" : "flag-of-Philippines"
+  },
+  {
+    "name": "POLAND", "img" : "flag-of-Poland"
+  },
+  {
+    "name": "PORTUGAL", "img" : "flag-of-Portugal"
+  },
+  {
+    "name": "QATAR", "img" : "flag-of-Qatar"
+  },
+  {
+    "name": "ROMANIA", "img" : "flag-of-Romania"
+  },
+  {
+    "name": "RUSSIA", "img" : "flag-of-Russia"
+  },
+  {
+    "name": "RWANDA", "img" : "flag-of-Rwanda"
+  },
+  {
+    "name": "SAINT KITTS AND NEVIS", "img" : "flag-of-St-Kitts-Nevis"
+  },
+  {
+    "name": "SAINT LUCIA", "img" : "flag-of-St-Lucia"
+  },
+  {
+    "name": "SAINT VINCENT AND THE GRENADINES", "img" : "flag-of-St-Vincent-the-Grenadines"
+  },
+  {
+    "name": "SAMOA", "img" : "flag-of-Samoa"
+  },
+  {
+    "name": "SAN MARINO", "img" : "flag-of-San-Marino"
+  },
+  {
+    "name": "SAO TOME AND PRINCIPE", "img" : "flag-of-Sao-Tome-and-Principe"
+  },
+  {
+    "name": "SAUDI ARABIA", "img" : "flag-of-Saudi-Arabia"
+  },
+  {
+    "name": "SENEGAL", "img" : "flag-of-Senegal"
+  },
+  {
+    "name": "SERBIA", "img" : "flag-of-Serbia"
+  },
+  {
+    "name": "SEYCHELLES", "img" : "flag-of-Seychelles"
+  },
+  {
+    "name": "SIERRA LEONE", "img" : "flag-of-Sierra-Leone"
+  },
+  {
+    "name": "SINGAPORE", "img" : "flag-of-Singapore"
+  },
+  {
+    "name": "SLOVAKIA", "img" : "flag-of-Slovakia"
+  },
+  {
+    "name": "SLOVENIA", "img" : "flag-of-Slovenia"
+  },
+  {
+    "name": "SOLOMON ISLANDS", "img" : "flag-of-Solomon-Islands"
+  },
+  {
+    "name": "SOMALIA", "img" : "flag-of-Somalia"
+  },
+  {
+    "name": "SOUTH AFRICA", "img" : "flag-of-South-Africa"
+  },
+  {
+    "name": "SOUTH KOREA", "img" : "flag-of-Korea-South"
+  },
+  {
+    "name": "SOUTH SUDAN", "img" : "flag-of-South-Sudan"
+  },
+  {
+    "name": "SPAIN", "img" : "flag-of-Spain"
+  },
+  {
+    "name": "SRI LANKA", "img" : "flag-of-Sri-Lanka"
+  },
+  {
+    "name": "SUDAN", "img" : "flag-of-Sudan"
+  },
+  {
+    "name": "SURINAME", "img" : "flag-of-Suriname"
+  },
+  {
+    "name": "SWEDEN", "img" : "flag-of-Sweden"
+  },
+  {
+    "name": "SWITZERLAND", "img" : "flag-of-Switzerland"
+  },
+  {
+    "name": "SYRIA", "img" : "flag-of-Syria"
+  },
+  {
+    "name": "TAIWAN", "img" : "flag-of-Taiwan"
+  },
+  {
+    "name": "TAJIKISTAN", "img" : "flag-of-Tajikistan"
+  },
+  {
+    "name": "TANZANIA", "img" : "flag-of-Tanzania"
+  },
+  {
+    "name": "THAILAND", "img" : "flag-of-Thailand"
+  },
+  {
+    "name": "TIMOR-LESTE", "img" : "flag-of-Timor-Leste"
+  },
+  {
+    "name": "TOGO", "img" : "flag-of-Togo"
+  },
+  {
+    "name": "TONGA", "img" : "flag-of-Tonga"
+  },
+  {
+    "name": "TRINIDAD AND TOBAGO", "img" : "flag-of-Trinidad-and-Tobago"
+  },
+  {
+    "name": "TUNISIA", "img" : "flag-of-Tunisia"
+  },
+  {
+    "name": "TURKEY", "img" : "flag-of-Turkey"
+  },
+  {
+    "name": "TURKMENISTAN", "img" : "flag-of-Turkmenistan"
+  },
+  {
+    "name": "TUVALU", "img" : "flag-of-Tuvalu"
+  },
+  {
+    "name": "UGANDA", "img" : "flag-of-Uganda"
+  },
+  {
+    "name": "UKRAINE", "img" : "flag-of-Ukraine"
+  },
+  {
+    "name": "UNITED ARAB EMIRATES", "img" : "flag-of-United-Arab-Emirates"
+  },
+  {
+    "name": "UNITED KINGDOM", "img" : "flag-of-United-Kingdom"
+  },
+  {
+    "name": "UNITED STATES OF AMERICA", "img" : "flag-of-United-States-of-America"
+  },
+  {
+    "name": "URUGUAY", "img" : "flag-of-Uruguay"
+  },
+  {
+    "name": "UZBEKISTAN", "img" : "flag-of-Uzbekistan"
+  },
+  {
+    "name": "VANUATU", "img" : "flag-of-Vanuatu"
+  },
+  {
+    "name": "VATICAN CITY", "img" : "flag-of-Vatican-City"
+  },
+  {
+    "name": "VENEZUELA", "img" : "flag-of-Venezuela"
+  },
+  {
+    "name": "VIETNAM", "img" : "flag-of-Vietnam"
+  },
+  {
+    "name": "YEMEN", "img" : "flag-of-Yemen"
+  },
+  {
+    "name": "ZAMBIA", "img" : "flag-of-Zambia"
+  },
+  {
+    "name": "ZIMBABWE", "img" : "flag-of-Zimbabwe"
+  }
+];
+
+
+
+  // for(var i = 0 ; i < countries.length ; i++){
+  //   // countries[i].name.toUpperCase();
+
+  //   // arr.push({"name" : countries[i].name.toUpperCase()});
+  //   //console.log(shuffle(countries[i].name));
+  // }
+
+  let currentIndex = 0;
+
+  function append(){
+      let node = document.getElementById("button-holder");
+
+      let child = document.createElement('button');
+      let img = document.getElementById('image');
+
+      let characters = shuffle(countries[currentIndex].name);
+
+      if( node.hasChildNodes()){
+      	  node.innerHTML = '';
+      	  for(var i = 0 ; i < characters.length ; i++){
+            let child = document.createElement('button');
+            img.src = './img/'+countries[currentIndex].img+'.png';
+            child.value = characters[i];
+            child.innerHTML = characters[i];
+            child.setAttribute("class" , "button-tag");
+            node.appendChild(child);
+        }
+      }     
+  }
+
+  append();
+
+  let btn = document.getElementById('button-holder');
+
+  // btn.forEach( function(currentValue){
+
+  // 	currentValue.addEventListener('click' , e => {
+  // 		const { target } = e;
+		// if (target.matches('button')) {
+		//     displayAnswer(this.value);
+		//  }
+  // 	});
+  //     // currentValue.addEventListener('click' , function(){
+  //     //   displayAnswer(this.value);
+  //     // });
+  // });
+
+
+
+  	btn.addEventListener('click', e => {
+  		console.log(e);
+		const { target } = e;
+		displayAnswer(target.value);
+	});
+
+  function displayAnswer(text){
+    let tag = document.createElement('p');
+    let holder = document.getElementById('text-holder');
+    tag.innerHTML = text;
+    holder.appendChild(tag);
+  }
+
+  function shuffle(s) {
+      var arr = s.split('');           // Convert String to array
+      
+      arr.sort(function() {
+        return 0.5 - Math.random();
+      });  
+      s = arr.join('');                // Convert Array to string
+      return s;                        // Return shuffled string
+  }
+
+// var images = document.getElementsByTagName('img');
+// var srcList = [];
+// var i = 0;
+
+// setInterval(function(){
+//     if(images.length > i){
+//         srcList.push(images[i].src);
+//         var link = document.createElement("a");
+//         link.id=i;
+//         var str = images[i].src;
+//         var text = str.substring(str.lastIndexOf("/") + 1, str.lastIndexOf(".") );
+//         link.download = text;
+//         link.href = images[i].src;
+//         link.click();
+//         i++;
+//     }
+// },1500);
+
+   document.getElementById('submit').addEventListener('click' , function(){
+      let holder = document.getElementById('text-holder');
+      let text = holder.textContent;
+      if(text === countries[currentIndex].name){
+          alert('correct');
+          holder.textContent = '';
+          currentIndex++;
+          append();
+      }
+      else{
+      	  alert('haha sala');
+      	  holder.textContent = '';
+          currentIndex++;
+          append();
+      }
+      
+   });
+
+   document.getElementById('clear').addEventListener('click' , function(){
+   		document.getElementById('text-holder').textContent = '';
+   });
+
+  </script>
+</body>
+</html>
