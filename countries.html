@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    
+    #text-holder{
+      height: 50px;
+      width: auto;
+    }
+
+    div#button-holder {display: flex;column-gap: 5px;}
+
+  </style>
+</head>
+<body>
+
+<div>
+  <img />
+  <br>
+  <button id="submit">Submit</button>
+  <button id="next">Next</button>
+</div>
+
+<div id="text-holder" style="display: flex;"></div>
+
+<div id="button-holder">
+
+</div>
+
+<script type="text/javascript">
+  
+var countries = [
+  {
+    "name": "AFGHANISTAN" , "img" : 
+  },
+  {
+    "name": "ALBANIA" , "img" : 
+  },
+  {
+    "name": "ALGERIA", "img" : 
+  },
+  {
+    "name": "ANDORRA" , "img" : 
+  },
+  {
+    "name": "ANGOLA", "img" :  , "img" : 
+  },
+  {
+    "name": "ANTIGUA AND BARBUDA" , "img" : 
+  },
+  {
+    "name": "ARGENTINA", "img" : 
+  },
+  {
+    "name": "ARMENIA", "img" : 
+  },
+  {
+    "name": "AUSTRALIA", "img" : 
+  },
+  {
+    "name": "AUSTRIA", "img" : 
+  },
+  {
+    "name": "AZERBAIJAN", "img" : 
+  },
+  {
+    "name": "BAHAMAS", "img" : 
+  },
+  {
+    "name": "BAHRAIN", "img" : 
+  },
+  {
+    "name": "BANGLADESH", "img" : 
+  },
+  {
+    "name": "BARBADOS", "img" : 
+  },
+  {
+    "name": "BELARUS", "img" : 
+  },
+  {
+    "name": "BELGIUM", "img" : 
+  },
+  {
+    "name": "BELIZE", "img" : 
+  },
+  {
+    "name": "BENIN", "img" : 
+  },
+  {
+    "name": "BHUTAN", "img" : 
+  },
+  {
+    "name": "BOLIVIA", "img" : 
+  },
+  {
+    "name": "BOSNIA AND HERZEGOVINA", "img" : 
+  },
+  {
+    "name": "BOTSWANA", "img" : 
+  },
+  {
+    "name": "BRAZIL", "img" : 
+  },
+  {
+    "name": "BRUNEI", "img" : 
+  },
+  {
+    "name": "BULGARIA", "img" : 
+  },
+  {
+    "name": "BURKINA FASO", "img" : 
+  },
+  {
+    "name": "BURUNDI", "img" : 
+  },
+  {
+    "name": "CABO VERDE", "img" : 
+  },
+  {
+    "name": "CAMBODIA", "img" : 
+  },
+  {
+    "name": "CAMEROON", "img" : 
+  },
+  {
+    "name": "CANADA", "img" : 
+  },
+  {
+    "name": "CENTRAL AFRICAN REPUBLIC", "img" : 
+  },
+  {
+    "name": "CHAD", "img" : 
+  },
+  {
+    "name": "CHILE", "img" : 
+  },
+  {
+    "name": "CHINA", "img" : 
+  },
+  {
+    "name": "COLOMBIA", "img" : 
+  },
+  {
+    "name": "COMOROS", "img" : 
+  },
+  {
+    "name": "CONGO, DEMOCRATIC REPUBLIC OF THE", "img" : 
+  },
+  {
+    "name": "CONGO, REPUBLIC OF THE", "img" : 
+  },
+  {
+    "name": "COSTA RICA", "img" : 
+  },
+  {
+    "name": "COTE D'IVOIRE", "img" : 
+  },
+  {
+    "name": "CROATIA", "img" : 
+  },
+  {
+    "name": "CUBA"
+  },
+  {
+    "name": "CYPRUS"
+  },
+  {
+    "name": "CZECHIA"
+  },
+  {
+    "name": "DENMARK"
+  },
+  {
+    "name": "DJIBOUTI"
+  },
+  {
+    "name": "DOMINICA"
+  },
+  {
+    "name": "DOMINICAN REPUBLIC"
+  },
+  {
+    "name": "ECUADOR"
+  },
+  {
+    "name": "EGYPT"
+  },
+  {
+    "name": "EL SALVADOR"
+  },
+  {
+    "name": "EQUATORIAL GUINEA"
+  },
+  {
+    "name": "ERITREA"
+  },
+  {
+    "name": "ESTONIA"
+  },
+  {
+    "name": "ESWATINI"
+  },
+  {
+    "name": "ETHIOPIA"
+  },
+  {
+    "name": "FIJI"
+  },
+  {
+    "name": "FINLAND"
+  },
+  {
+    "name": "FRANCE"
+  },
+  {
+    "name": "GABON"
+  },
+  {
+    "name": "GAMBIA"
+  },
+  {
+    "name": "GEORGIA"
+  },
+  {
+    "name": "GERMANY"
+  },
+  {
+    "name": "GHANA"
+  },
+  {
+    "name": "GREECE"
+  },
+  {
+    "name": "GRENADA"
+  },
+  {
+    "name": "GUATEMALA"
+  },
+  {
+    "name": "GUINEA"
+  },
+  {
+    "name": "GUINEA-BISSAU"
+  },
+  {
+    "name": "GUYANA"
+  },
+  {
+    "name": "HAITI"
+  },
+  {
+    "name": "HONDURAS"
+  },
+  {
+    "name": "HUNGARY"
+  },
+  {
+    "name": "ICELAND"
+  },
+  {
+    "name": "INDIA"
+  },
+  {
+    "name": "INDONESIA"
+  },
+  {
+    "name": "IRAN"
+  },
+  {
+    "name": "IRAQ"
+  },
+  {
+    "name": "IRELAND"
+  },
+  {
+    "name": "ISRAEL"
+  },
+  {
+    "name": "ITALY"
+  },
+  {
+    "name": "JAMAICA"
+  },
+  {
+    "name": "JAPAN"
+  },
+  {
+    "name": "JORDAN"
+  },
+  {
+    "name": "KAZAKHSTAN"
+  },
+  {
+    "name": "KENYA"
+  },
+  {
+    "name": "KIRIBATI"
+  },
+  {
+    "name": "KOSOVO"
+  },
+  {
+    "name": "KUWAIT"
+  },
+  {
+    "name": "KYRGYZSTAN"
+  },
+  {
+    "name": "LAOS"
+  },
+  {
+    "name": "LATVIA"
+  },
+  {
+    "name": "LEBANON"
+  },
+  {
+    "name": "LESOTHO"
+  },
+  {
+    "name": "LIBERIA"
+  },
+  {
+    "name": "LIBYA"
+  },
+  {
+    "name": "LIECHTENSTEIN"
+  },
+  {
+    "name": "LITHUANIA"
+  },
+  {
+    "name": "LUXEMBOURG"
+  },
+  {
+    "name": "MADAGASCAR"
+  },
+  {
+    "name": "MALAWI"
+  },
+  {
+    "name": "MALAYSIA"
+  },
+  {
+    "name": "MALDIVES"
+  },
+  {
+    "name": "MALI"
+  },
+  {
+    "name": "MALTA"
+  },
+  {
+    "name": "MARSHALL ISLANDS"
+  },
+  {
+    "name": "MAURITANIA"
+  },
+  {
+    "name": "MAURITIUS"
+  },
+  {
+    "name": "MEXICO"
+  },
+  {
+    "name": "MICRONESIA"
+  },
+  {
+    "name": "MOLDOVA"
+  },
+  {
+    "name": "MONACO"
+  },
+  {
+    "name": "MONGOLIA"
+  },
+  {
+    "name": "MONTENEGRO"
+  },
+  {
+    "name": "MOROCCO"
+  },
+  {
+    "name": "MOZAMBIQUE"
+  },
+  {
+    "name": "MYANMAR"
+  },
+  {
+    "name": "NAMIBIA"
+  },
+  {
+    "name": "NAURU"
+  },
+  {
+    "name": "NEPAL"
+  },
+  {
+    "name": "NETHERLANDS"
+  },
+  {
+    "name": "NEW ZEALAND"
+  },
+  {
+    "name": "NICARAGUA"
+  },
+  {
+    "name": "NIGER"
+  },
+  {
+    "name": "NIGERIA"
+  },
+  {
+    "name": "NORTH KOREA"
+  },
+  {
+    "name": "NORTH MACEDONIA"
+  },
+  {
+    "name": "NORWAY"
+  },
+  {
+    "name": "OMAN"
+  },
+  {
+    "name": "PAKISTAN"
+  },
+  {
+    "name": "PALAU"
+  },
+  {
+    "name": "PALESTINE"
+  },
+  {
+    "name": "PANAMA"
+  },
+  {
+    "name": "PAPUA NEW GUINEA"
+  },
+  {
+    "name": "PARAGUAY"
+  },
+  {
+    "name": "PERU"
+  },
+  {
+    "name": "PHILIPPINES"
+  },
+  {
+    "name": "POLAND"
+  },
+  {
+    "name": "PORTUGAL"
+  },
+  {
+    "name": "QATAR"
+  },
+  {
+    "name": "ROMANIA"
+  },
+  {
+    "name": "RUSSIA"
+  },
+  {
+    "name": "RWANDA"
+  },
+  {
+    "name": "SAINT KITTS AND NEVIS"
+  },
+  {
+    "name": "SAINT LUCIA"
+  },
+  {
+    "name": "SAINT VINCENT AND THE GRENADINES"
+  },
+  {
+    "name": "SAMOA"
+  },
+  {
+    "name": "SAN MARINO"
+  },
+  {
+    "name": "SAO TOME AND PRINCIPE"
+  },
+  {
+    "name": "SAUDI ARABIA"
+  },
+  {
+    "name": "SENEGAL"
+  },
+  {
+    "name": "SERBIA"
+  },
+  {
+    "name": "SEYCHELLES"
+  },
+  {
+    "name": "SIERRA LEONE"
+  },
+  {
+    "name": "SINGAPORE"
+  },
+  {
+    "name": "SLOVAKIA"
+  },
+  {
+    "name": "SLOVENIA"
+  },
+  {
+    "name": "SOLOMON ISLANDS"
+  },
+  {
+    "name": "SOMALIA"
+  },
+  {
+    "name": "SOUTH AFRICA"
+  },
+  {
+    "name": "SOUTH KOREA"
+  },
+  {
+    "name": "SOUTH SUDAN"
+  },
+  {
+    "name": "SPAIN"
+  },
+  {
+    "name": "SRI LANKA"
+  },
+  {
+    "name": "SUDAN"
+  },
+  {
+    "name": "SURINAME"
+  },
+  {
+    "name": "SWEDEN"
+  },
+  {
+    "name": "SWITZERLAND"
+  },
+  {
+    "name": "SYRIA"
+  },
+  {
+    "name": "TAIWAN"
+  },
+  {
+    "name": "TAJIKISTAN"
+  },
+  {
+    "name": "TANZANIA"
+  },
+  {
+    "name": "THAILAND"
+  },
+  {
+    "name": "TIMOR-LESTE"
+  },
+  {
+    "name": "TOGO"
+  },
+  {
+    "name": "TONGA"
+  },
+  {
+    "name": "TRINIDAD AND TOBAGO"
+  },
+  {
+    "name": "TUNISIA"
+  },
+  {
+    "name": "TURKEY"
+  },
+  {
+    "name": "TURKMENISTAN"
+  },
+  {
+    "name": "TUVALU"
+  },
+  {
+    "name": "UGANDA"
+  },
+  {
+    "name": "UKRAINE"
+  },
+  {
+    "name": "UNITED ARAB EMIRATES"
+  },
+  {
+    "name": "UNITED KINGDOM"
+  },
+  {
+    "name": "UNITED STATES OF AMERICA"
+  },
+  {
+    "name": "URUGUAY"
+  },
+  {
+    "name": "UZBEKISTAN"
+  },
+  {
+    "name": "VANUATU"
+  },
+  {
+    "name": "VATICAN CITY (HOLY SEE)"
+  },
+  {
+    "name": "VENEZUELA"
+  },
+  {
+    "name": "VIETNAM"
+  },
+  {
+    "name": "YEMEN"
+  },
+  {
+    "name": "ZAMBIA"
+  },
+  {
+    "name": "ZIMBABWE"
+  }
+];
+
+
+
+  // for(var i = 0 ; i < countries.length ; i++){
+  //   // countries[i].name.toUpperCase();
+
+  //   // arr.push({"name" : countries[i].name.toUpperCase()});
+  //   //console.log(shuffle(countries[i].name));
+  // }
+
+  let currentIndex = 0;
+
+  function append(){
+      let node = document.getElementById("button-holder");
+
+      let child = document.createElement('button');
+
+      let characters = shuffle(countries[currentIndex].name);
+
+        for(var i = 0 ; i < characters.length ; i++){
+            let child = document.createElement('button');
+            child.value = characters[i];
+            child.innerHTML = characters[i];
+            child.setAttribute("class" , "button-tag");
+            node.appendChild(child);
+        }
+  }
+
+  append();
+
+  let btn = document.querySelectorAll('.button-tag');
+
+  btn.forEach( function(currentValue){
+      currentValue.addEventListener('click' , function(){
+        displayAnswer(this.value);
+      });
+  });
+
+  function displayAnswer(text){
+    let tag = document.createElement('p');
+    let holder = document.getElementById('text-holder');
+    tag.innerHTML = text;
+    holder.appendChild(tag);
+  }
+
+  function shuffle(s) {
+      var arr = s.split('');           // Convert String to array
+      
+      arr.sort(function() {
+        return 0.5 - Math.random();
+      });  
+      s = arr.join('');                // Convert Array to string
+      return s;                        // Return shuffled string
+  }
+
+// var images = document.getElementsByTagName('img');
+// var srcList = [];
+// var i = 0;
+
+// setInterval(function(){
+//     if(images.length > i){
+//         srcList.push(images[i].src);
+//         var link = document.createElement("a");
+//         link.id=i;
+//         var str = images[i].src;
+//         var text = str.substring(str.lastIndexOf("/") + 1, str.lastIndexOf(".") );
+//         link.download = text;
+//         link.href = images[i].src;
+//         link.click();
+//         i++;
+//     }
+// },1500);
+
+   document.getElementById('submit').addEventListener('click' , function(){
+      let holder = document.getElementById('text-holder');
+      let text = holder.textContent;
+      if(text === countries[currentIndex].name){
+          alert('correct');
+      }
+      currentIndex++;
+      append();
+   });
+
+  </script>
+</body>
+</html>
